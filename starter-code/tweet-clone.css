@@ -1,0 +1,23 @@
+body{
+  background-color: rgb(244, 248, 249);
+  font-family: Helvetica;
+}
+
+.tweet-container{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(225, 232, 237);
+  border-radius: 7px;
+  padding: 30px;
+}
+
+.tweet-header > div {
+  display: inline-block;
+}
+
+.tweet-button{
+  float: right;
+}
+
+.tweet-footer > div {
+  display: inline-block;
+}
