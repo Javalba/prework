@@ -1,8 +1,11 @@
+/*ALL BODY*/
 body{
   background-color: rgb(244, 248, 249);
   font-family: Helvetica;
+  font-size: 18px;
 }
 
+/*CONTAINERS*/
 .tweet-container{
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(225, 232, 237);
@@ -10,14 +13,95 @@ body{
   padding: 30px;
 }
 
+
+
+.tweet-user{
+  padding: 10px;
+}
+
+.tweet-footer,.tweet-datetime{
+  color: rgb(101, 116, 127);
+}
+
+.tweet-footer{
+  margin: 10px;
+}
+
+.tweet-message,.tweet-datetime{
+margin: 10px;
+}
+
+.tweet-datetime{
+  margin-bottom: 7px;
+}
+
+
+.tweet-name,.tweet-message{
+  color: black;
+  font-size: 21px;
+}
+
+.tweet-name{
+  font-weight: bold;
+}
+
+.tweet-account{
+  color:  rgb(104, 109, 129);
+  margin: 0;
+}
+
 .tweet-header > div {
   display: inline-block;
 }
 
+.tweet-header >span{
+}
+
 .tweet-button{
   float: right;
+  color: rgb(85, 172, 238);
+  font-weight: bold;
+  border: 2px solid rgb(85, 172, 238);
+  border-radius: 7px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 20px;
+  background-color: white;
 }
+
+
 
 .tweet-footer > div {
   display: inline-block;
+  margin: 1px 10px;
+}
+
+.tweet-rt{
+  padding-left: 15px;
+}
+
+.follow-p{
+  display: inline-block;
+  margin: 0;
+}
+
+/*IMAGENES*/
+.profile-img{
+  -moz-transform:scale(0.9);
+  -webkit-transform:scale(0.9);
+  transform:scale(0.9);
+
+  vertical-align: top;
+}
+
+.name-icon,.validated-icon,.twitter-icon,.retweet-icon,.favourite-icon,.reply-icon{
+  -moz-transform:scale(0.75);
+  -webkit-transform:scale(0.75);
+  transform:scale(0.75);
+}
+
+
+
+.name-icon,.validated-icon,.twitter-icon{
+  vertical-align: middle;
 }

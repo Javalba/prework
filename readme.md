@@ -1,7 +1,5 @@
 # HTML & CSS | Tweet clone
 
-PROBANDO DEVELOP
-
 ## Introduction
 
 We have learned a lot of new stuff about HTML and CSS. Now, we will work with an small example to practice all what we learned. We are going to clone a tweet.
