@@ -1,0 +1,14 @@
+.rover-moves{
+  border-width: 2px;
+  border-style: dotted;
+  display: inline-block;
+  margin: 2px;
+}
+
+#orders{
+  color: green;
+}
+
+#reset{
+  color: red;
+}

@@ -1,9 +1,35 @@
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>Mars Rover Kata!</title>
 	<script type="text/javascript" src="rover.js"></script>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<script src="rover.js"></script>
+
+<p>**** MARS ROVER GAMING ******</p>
+<p>Enter an order:
+	<br> f for go forward
+	<br> b for go back
+	<br> r for turn right
+	<br> l for turn left
+	<br><br>
+	Example: fffrfflfffbb
+</p>
+
+<div class="accept-button">
+	<form id="form" onsubmit="return false;">
+	    <input type="text" id="userInput" autofocus="" maxlength='15' />
+	    <input id='orders'type="submit" onclick="userOrders();"/>
+			<input id='reset'type="reset" onclick="resetRover();"/>
+	</form>
+</div>
+<div class="rover-moves">
+	<p id="myRover"></p>
+</div>
+
 
 </body>
 </html>
