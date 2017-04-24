@@ -13,17 +13,16 @@ function printResult(rover,movement){
   if(movement==="l") infoMove+="Turn left!";
   if(movement==="r") infoMove+="Turn right!";
 
-  // var info = rover.moves+" - "+infoMove+" - Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nDirection: "+rover.direction+"<br></br>";
+//ECMASCRIPT 6
+  var info = `${rover.moves} - ${infoMove} - Rover Position: [ ${rover.position[0]} ,  ${rover.position[1]}] Direction: ${rover.direction}`;
+  //var info = rover.moves+" - "+infoMove+" - Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nDirection: "+rover.direction+"<br></br>";
 
-  // var para = document.createElement("p");
-  // var node = document.createTextNode(info);
-  // para.appendChild(node);
-  // var element = document.getElementById("rover-moves");
-  // element.appendChild(para);
+  var para = document.createElement("p");
+  var node = document.createTextNode(info);
+  para.appendChild(node);
+  var element = document.getElementsByClassName("rover-moves")[0];
+  element.appendChild(para);
 
-  var info = rover.moves+" - "+infoMove+" - Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nDirection: "+rover.direction+"<br></br>";
-  document.getElementById("myRover").insertAdjacentHTML('beforebegin', info);
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nNew Direction: "+rover.direction);
 }
 
 /*Move rover forward one position
@@ -145,9 +144,10 @@ function resetRover() {
   myRover.direction ='N';
   myRover.moves = 0;
 
-  // var myNode = document.getElementById("rover-moves");
-  // while (myNode.firstChild) {
-  //   myNode.removeChild(myNode.firstChild);
+  var myNode = document.getElementsByClassName("rover-moves")[0];
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+  }
 
 }
 
