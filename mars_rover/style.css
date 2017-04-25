@@ -3,6 +3,8 @@
   border-style: dotted;
   display: inline-block;
   margin: 2px;
+  max-height: 500px;
+  overflow: auto;
 }
 
 #orders{

@@ -24,23 +24,14 @@ function printResult(report,rover,movement){
   //ECMASCRIPT 6
     info = `${rover.moves} - ${infoMove} - Rover Position: [ ${rover.position[0]} ,  ${rover.position[1]}] Direction: ${rover.direction}`;
     //var info = rover.moves+" - "+infoMove+" - Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nDirection: "+rover.direction+"<br></br>";
-
-    var para = document.createElement("p");
-    var node = document.createTextNode(info);
-    para.appendChild(node);
-    var element = document.getElementsByClassName("rover-moves")[0];
-    element.appendChild(para);
-
   }else{
     info=`${rover.moves} - ${report.msg}`;
-    var para2 = document.createElement("p");
-    var node2 = document.createTextNode(info);
-    para2.appendChild(node2);
-    var element2 = document.getElementsByClassName("rover-moves")[0];
-    element2.appendChild(para2);
-
   }
-
+  var para = document.createElement("p");
+  var node = document.createTextNode(info);
+  para.appendChild(node);
+  var element = document.getElementsByClassName("rover-moves")[0];
+  element.appendChild(para);
 }
 
 /*Move rover forward one position
@@ -68,7 +59,7 @@ function goForward(rover) {
   var report = validations(rover,movement);
   if(report.crash){
     rover = JSON.parse(JSON.stringify(lastState)); // restore the last valid state local
-    myRover = JSON.parse(JSON.stringify(lastState)); // restore the last valid state global
+    myRover = JSON.parse(JSON.stringify(lastState));
   }
   printResult(report,rover,movement);
 }
