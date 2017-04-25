@@ -27,6 +27,7 @@ function printResult(report,rover,movement){
   }else{
     info=`${myRover.moves} - ${report.msg}`;
   }
+  
   var para = document.createElement("p");
   var node = document.createTextNode(info);
   para.appendChild(node);
