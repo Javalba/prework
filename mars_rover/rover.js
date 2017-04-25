@@ -12,7 +12,7 @@ var obstacles = {
 /*Function that print result in html page and log console. */
 function printResult(report,rover,movement){
   var info ="";
-  rover.moves +=1;
+  myRover.moves +=1;
   if(!report.crash){
 
     var infoMove="";
@@ -22,10 +22,10 @@ function printResult(report,rover,movement){
     if(movement==="r") infoMove+="Turn right!";
 
   //ECMASCRIPT 6
-    info = `${rover.moves} - ${infoMove} - Rover Position: [ ${rover.position[0]} ,  ${rover.position[1]}] Direction: ${rover.direction}`;
+    info = `${myRover.moves} - ${infoMove} - Rover Position: [ ${rover.position[0]} ,  ${rover.position[1]}] Direction: ${rover.direction}`;
     //var info = rover.moves+" - "+infoMove+" - Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nDirection: "+rover.direction+"<br></br>";
   }else{
-    info=`${rover.moves} - ${report.msg}`;
+    info=`${myRover.moves} - ${report.msg}`;
   }
   var para = document.createElement("p");
   var node = document.createTextNode(info);
