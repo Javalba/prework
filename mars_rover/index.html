@@ -21,14 +21,29 @@
 
 <div class="accept-button">
 	<form id="form" onsubmit="return false;">
+			<p>PROBE 1</p>
 	    <input type="text" id="userInput" autofocus="" maxlength='15' />
-	    <input id='orders'type="submit" onclick="userOrders();"/>
+	    <input id='orders'type="submit" onclick="userOrders(1);"/>
 			<input id='reset'type="reset" onclick="resetRover();"/>
 	</form>
-</div>
-<div class="rover-moves">
+	<div class="rover-moves">
+	</div>
 	<!-- <p id="myRover"></p> -->
 </div>
+
+
+<div class="accept-button">
+	<form id="form2" onsubmit="return false;">
+		<p>PROBE 2</p>
+	    <input type="text" id="userInput2" autofocus="" maxlength='15' />
+	    <input id='orders'type="submit" onclick="userOrders(2);"/>
+			<input id='reset'type="reset" onclick="resetRover();"/>
+	</form>
+	<div class="rover-moves2">
+		<!-- <p id="myRover"></p> -->
+	</div>
+</div>
+
 
 
 </body>

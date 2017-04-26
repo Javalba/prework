@@ -7,10 +7,30 @@
   overflow: auto;
 }
 
+.rover-moves2{
+  border-width: 2px;
+  border-style: dotted;
+  display: inline-block;
+  margin: 2px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+
+
 #orders{
   color: green;
 }
 
 #reset{
   color: red;
+}
+
+.accept-button {
+    display: inline-block;
+    float: left;
+}
+
+.accept-button:last-child {
+    margin-left: 250px;
 }
