@@ -7,6 +7,8 @@ class RoverMars {
   }
 }
 
+
+
 let probe = new RoverMars(0,[0,0],'N',0);
 let myRover = new RoverMars (1,[0,0],'N',0);
 let myRoverCompanion = new RoverMars (2,[10,10],'N',0);
@@ -16,6 +18,7 @@ var obstacles = {
   rock: [9,9],
   hole: [6,2],
 };
+
 
 /*Function that print result in html page and log console. */
 function printResult(report,rover,movement){
@@ -53,6 +56,9 @@ function printResult(report,rover,movement){
   para.appendChild(node);
   var element = document.getElementsByClassName(""+className)[0];
   element.appendChild(para);
+
+   document.getElementById("probe1").innerHTML = `PROBE 1 - Position: [${myRover.position}]`;
+   document.getElementById("probe2").innerHTML = `PROBE 2 - Position: [${myRoverCompanion.position}]`;
 }
 
 /*Move rover forward one position
@@ -194,15 +200,30 @@ function userOrders(id) {
 * Set Mars Rover to initial values.
 */
 function resetRover(id) {
-  myRover.position = [0,0];
-  myRover.direction ='N';
-  myRover.moves = 0;
 
+  let className="";
+
+  switch (id) {
+    case 1:
+        myRover.position = [0,0];
+        myRover.direction ='N';
+        myRover.moves = 0;
+        className="rover-moves";
+      break;
+    case 2:
+        myRoverCompanion.position = [10,10];
+        myRoverCompanion.direction ='N';
+        myRoverCompanion.moves = 0;
+        className="rover-moves2";
+      break;
+  }
   //Remove elements in html file
-  var myNode = document.getElementsByClassName("rover-moves")[0];
+  var myNode = document.getElementsByClassName(""+className)[0];
   while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
   }
+  document.getElementById("probe1").innerHTML = `PROBE 1 - Position: [${myRover.position}]`;
+  document.getElementById("probe2").innerHTML = `PROBE 2 - Position: [${myRoverCompanion.position}]`;
 }
 
 /*

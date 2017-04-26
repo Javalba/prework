@@ -29,8 +29,9 @@
 .accept-button {
     display: inline-block;
     float: left;
+
 }
 
-.accept-button:last-child {
-    margin-left: 250px;
+.accept-button:first-of-type {
+    margin-right: 250px;
 }
