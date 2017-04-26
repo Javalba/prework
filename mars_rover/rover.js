@@ -1,20 +1,43 @@
-var myRover = {
-  position: [0,0],
-  direction: 'N',
-  moves: 0
-};
+class RoverMars {
+  constructor(id,position, direction, moves) {
+    this.id = id;
+    this.position = position;
+    this.direction = direction;
+    this.moves = moves;
+  }
+}
+
+
+
+let probe = new RoverMars(0,[0,0],'N',0);
+let myRover = new RoverMars (1,[0,0],'N',0);
+let myRoverCompanion = new RoverMars (2,[10,10],'N',0);
+
 
 var obstacles = {
   rock: [9,9],
   hole: [6,2],
 };
 
+
 /*Function that print result in html page and log console. */
 function printResult(report,rover,movement){
-  var info ="";
-  myRover.moves +=1;
-  if(!report.crash){
 
+  let info ="";
+  let className="";
+  //myRover.moves +=1;
+  rover.moves +=1;
+  switch (rover.id) {
+    case 1:
+      myRover = JSON.parse(JSON.stringify(rover));
+      className="rover-moves";
+      break;
+    case 2:
+      myRoverCompanion = JSON.parse(JSON.stringify(rover));
+      className="rover-moves2";
+      break;
+  }
+  if(!report.crash){
     var infoMove="";
     if(movement==="f") infoMove+="Go forward!";
     if(movement==="b") infoMove+="Go backward!";
@@ -22,16 +45,20 @@ function printResult(report,rover,movement){
     if(movement==="r") infoMove+="Turn right!";
 
   //ECMASCRIPT 6
-    info = `${myRover.moves} - ${infoMove} - Rover Position: [ ${rover.position[0]} ,  ${rover.position[1]}] Direction: ${rover.direction}`;
+    info = `${rover.moves} - ${infoMove} - Rover Position: [ ${rover.position[0]} ,  ${rover.position[1]}] Direction: ${rover.direction}`;
     //var info = rover.moves+" - "+infoMove+" - Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nDirection: "+rover.direction+"<br></br>";
   }else{
-    info=`${myRover.moves} - ${report.msg}`;
+    info=`${rover.moves} - ${report.msg}`;
   }
+
   var para = document.createElement("p");
   var node = document.createTextNode(info);
   para.appendChild(node);
-  var element = document.getElementsByClassName("rover-moves")[0];
+  var element = document.getElementsByClassName(""+className)[0];
   element.appendChild(para);
+
+   document.getElementById("probe1").innerHTML = `PROBE 1 - Position: [${myRover.position}]`;
+   document.getElementById("probe2").innerHTML = `PROBE 2 - Position: [${myRoverCompanion.position}]`;
 }
 
 /*Move rover forward one position
@@ -58,8 +85,8 @@ function goForward(rover) {
   }
   var report = validations(rover,movement);
   if(report.crash){
-    rover = JSON.parse(JSON.stringify(lastState)); // restore the last valid state local
-    myRover = JSON.parse(JSON.stringify(lastState));
+    //rover = lastState --> Destroy rover-probe reference.
+    rover.position = lastState.position; // restore the last valid state local. Conservate rover-probe reference.
   }
   printResult(report,rover,movement);
 }
@@ -84,8 +111,8 @@ function goBackward(rover) {
   }
   var report = validations(rover,movement);
   if(report.crash){
-    rover = JSON.parse(JSON.stringify(lastState)); // restore the last valid state local
-    myRover = JSON.parse(JSON.stringify(lastState)); // restore the last valid state global
+    //rover = lastState --> Destroy rover-probe reference.
+    rover.position = lastState.position; // restore the last valid state local. Conservate rover-probe reference.
   }
   printResult(report,rover,movement);
 }
@@ -135,28 +162,36 @@ function turnLeft(rover) {
 /*
 * User orders given. Format example: ffrffls. Max 15 commands
 */
-function userOrders() {
+function userOrders(id) {
 
+  if(id === 1){
     /*Catch user input into var orders.*/
-		var orders = document.getElementById("userInput").value;
+    var orders = document.getElementById("userInput").value;
+    probe = JSON.parse(JSON.stringify(myRover));
+  }
+  if(id === 2) {
+    /*Catch user input into var orders.*/
+    var orders = document.getElementById("userInput2").value;
+    probe = JSON.parse(JSON.stringify(myRoverCompanion));
+  }
 
-    /*Convert orders to an array*/
-    var arrayOrders = orders.split("");
+  /*Convert orders to an array*/
+  var arrayOrders = orders.split("");
 
-    for (var i = 0; i < arrayOrders.length; i++) {
-      switch(arrayOrders[i]) {
-        case 'f':
-          goForward(myRover);
-          break;
-        case 'b':
-          goBackward(myRover);
-          break;
-        case 'r':
-          turnRight(myRover);
-          break;
-        case 'l':
-          turnLeft(myRover);
-          break;
+  for (var i = 0; i < arrayOrders.length; i++) {
+    switch(arrayOrders[i]) {
+      case 'f':
+        goForward(probe);
+        break;
+      case 'b':
+        goBackward(probe);
+        break;
+      case 'r':
+        turnRight(probe);
+        break;
+      case 'l':
+        turnLeft(probe);
+        break;
       }
     }
 }
@@ -164,16 +199,31 @@ function userOrders() {
 /*
 * Set Mars Rover to initial values.
 */
-function resetRover() {
-  myRover.position = [0,0];
-  myRover.direction ='N';
-  myRover.moves = 0;
+function resetRover(id) {
 
+  let className="";
+
+  switch (id) {
+    case 1:
+        myRover.position = [0,0];
+        myRover.direction ='N';
+        myRover.moves = 0;
+        className="rover-moves";
+      break;
+    case 2:
+        myRoverCompanion.position = [10,10];
+        myRoverCompanion.direction ='N';
+        myRoverCompanion.moves = 0;
+        className="rover-moves2";
+      break;
+  }
   //Remove elements in html file
-  var myNode = document.getElementsByClassName("rover-moves")[0];
+  var myNode = document.getElementsByClassName(""+className)[0];
   while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
   }
+  document.getElementById("probe1").innerHTML = `PROBE 1 - Position: [${myRover.position}]`;
+  document.getElementById("probe2").innerHTML = `PROBE 2 - Position: [${myRoverCompanion.position}]`;
 }
 
 /*
@@ -188,6 +238,22 @@ var report = {
   msg : ""
 };
 
+  /*TWO ROVERS*/
+  switch (rover.id) {
+    case 1:
+    if((rover.position[0] === myRoverCompanion.position[0]) && (rover.position[1] === myRoverCompanion.position[1])){
+      report.msg = "Your Rove will bump into your companion!";
+      return report;
+    }
+      break;
+    case 2:
+    if((rover.position[0] === myRover.position[0]) && (rover.position[1] === myRover.position[1])){
+      report.msg = "Your Rove will bump into your companion!";
+      return report;
+    }
+      break;
+  }
+
   //GRID 10X10
   if(rover.position[0] > 10 || (rover.position[1] > 10) || (rover.position[0] < 0) || (rover.position[1] < 0) ){
     report.msg = "Your Rove will goes off the grid. Stop.";
@@ -199,7 +265,7 @@ var report = {
      report.msg = "Your probe will fall into a hole. Stop ";
   }
   else{
-    report.crash=false;
+      report.crash=false;
   }
   return report;
 }
