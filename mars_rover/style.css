@@ -16,8 +16,6 @@
   overflow: auto;
 }
 
-
-
 #orders{
   color: green;
 }
@@ -33,5 +31,5 @@
 }
 
 .accept-button:first-of-type {
-    margin-right: 250px;
+    margin-right: 200px;
 }

@@ -7,8 +7,6 @@ class RoverMars {
   }
 }
 
-
-
 let probe = new RoverMars(0,[0,0],'N',0);
 let myRover = new RoverMars (1,[0,0],'N',0);
 let myRoverCompanion = new RoverMars (2,[10,10],'N',0);
@@ -22,10 +20,9 @@ var obstacles = {
 
 /*Function that print result in html page and log console. */
 function printResult(report,rover,movement){
-
   let info ="";
   let className="";
-  //myRover.moves +=1;
+
   rover.moves +=1;
   switch (rover.id) {
     case 1:
@@ -43,13 +40,9 @@ function printResult(report,rover,movement){
     if(movement==="b") infoMove+="Go backward!";
     if(movement==="l") infoMove+="Turn left!";
     if(movement==="r") infoMove+="Turn right!";
-
   //ECMASCRIPT 6
     info = `${rover.moves} - ${infoMove} - Rover Position: [ ${rover.position[0]} ,  ${rover.position[1]}] Direction: ${rover.direction}`;
-    //var info = rover.moves+" - "+infoMove+" - Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]\nDirection: "+rover.direction+"<br></br>";
-  }else{
-    info=`${rover.moves} - ${report.msg}`;
-  }
+  }else info=`${rover.moves} - ${report.msg}`;
 
   var para = document.createElement("p");
   var node = document.createTextNode(info);
@@ -197,10 +190,11 @@ function userOrders(id) {
 }
 
 /*
-* Set Mars Rover to initial values.
+* Set Mars Rover's to initial values.
+* Probe 1: [0,0]
+* Probe 2: [10,10]
 */
 function resetRover(id) {
-
   let className="";
 
   switch (id) {
@@ -219,9 +213,8 @@ function resetRover(id) {
   }
   //Remove elements in html file
   var myNode = document.getElementsByClassName(""+className)[0];
-  while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
-  }
+  while (myNode.firstChild) myNode.removeChild(myNode.firstChild);
+
   document.getElementById("probe1").innerHTML = `PROBE 1 - Position: [${myRover.position}]`;
   document.getElementById("probe2").innerHTML = `PROBE 2 - Position: [${myRoverCompanion.position}]`;
 }
